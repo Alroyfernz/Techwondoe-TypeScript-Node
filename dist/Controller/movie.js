@@ -13,10 +13,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Movie_1 = __importDefault(require("../Model/Movie"));
+const User_1 = __importDefault(require("../Model/User"));
 const newMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { userId } = req.params;
     try {
         const movie = new Movie_1.default(req.body);
         const savedMovie = yield movie.save();
+        yield User_1.default.updateOne({ _id: userId }, { $push: { MovieList: savedMovie._id } });
         res.status(200).json({
             message: 'New Move has been added to list',
             data: savedMovie
@@ -29,9 +32,14 @@ const newMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 const removeMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { movieId } = req.params;
+    const { movieId, userId } = req.params;
     try {
         yield Movie_1.default.deleteOne({ _id: movieId });
+        const { MovieList } = yield User_1.default.findOne({ _id: userId });
+        const filteredList = MovieList.filter((movie) => {
+            movie != movieId;
+        });
+        yield User_1.default.updateOne({ _id: userId }, { $set: { MovieList: filteredList } });
         res.status(200).json({
             message: "Movie succesfully removed from list.."
         });

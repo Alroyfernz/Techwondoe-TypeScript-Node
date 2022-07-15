@@ -1,7 +1,7 @@
 module.exports={
     //MOVIE CRUD apis
-    addMovie:"/add",
-    deleteMovie:"/remove/:movieId",
+    addMovie:"/add/:userId",
+    deleteMovie:"/remove/:movieId/:userId",
 
     //USER CRUD apis
 
