@@ -1,5 +1,6 @@
 require('dotenv').config();
 import movieRoute from "./Routes/movie";
+import userRoute from "./Routes/user"
 import express,{Express} from "express";
 import mongoose from "mongoose";
 const PORT=process.env.PORT;
@@ -13,6 +14,8 @@ mongoose.connect(MONGO_URL,()=>{
 });
 
 app.use('/movie',movieRoute);
+app.use('/user',userRoute);
+
 app.listen(3111,()=>{
     console.log("Server listening on PORT 3111");
 })
