@@ -28,4 +28,18 @@ const newMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         });
     }
 });
-module.exports = { newMovie };
+const removeMovie = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { movieId } = req.params;
+    try {
+        yield Movie_1.default.deleteOne({ _id: movieId });
+        res.status(200).json({
+            message: "Movie succesfully removed from list.."
+        });
+    }
+    catch (error) {
+        res.status(404).json({
+            message: `Error caused due to ${error.message}`
+        });
+    }
+});
+module.exports = { newMovie, removeMovie };

@@ -15,5 +15,18 @@ data:savedMovie
     })
 }
 }
+const removeMovie=async(req:Request,res:Response):Promise<void>=>{
+    const {movieId}=req.params;
+try {
+    await MovieModel.deleteOne({_id:movieId});
 
-module.exports={newMovie}
+    res.status(200).json({
+        message:"Movie succesfully removed from list.."
+    })
+} catch (error) {
+    res.status(404).json({
+        message:`Error caused due to ${error.message}`
+    })
+}
+}
+module.exports={newMovie,removeMovie}

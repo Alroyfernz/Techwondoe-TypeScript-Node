@@ -1,4 +1,6 @@
 "use strict";
 module.exports = {
-    addMovie: "/add"
+    //MOVIE CRUD apis
+    addMovie: "/add",
+    deleteMovie: "/remove/:movieId"
 };
