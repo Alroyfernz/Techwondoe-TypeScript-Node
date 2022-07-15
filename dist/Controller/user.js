@@ -12,6 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.userLogin = void 0;
 const User_1 = __importDefault(require("../Model/User"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
@@ -42,13 +43,12 @@ const userLogin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         });
     }
 });
-const userRegister = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const user = new User_1.default(req.body);
-        yield user.save();
-        res.status(200).json("user saved succ.");
-    }
-    catch (error) {
-    }
-});
-module.exports = { userLogin, userRegister };
+exports.userLogin = userLogin;
+// const userRegister=async(req: Request, res: Response)=>{
+// try {
+//     const user= new UserModel(req.body);
+//     await user.save();
+//     res.status(200).json("user saved succ.")
+// } catch (error) {
+// }
+// }

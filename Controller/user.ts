@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
-const userLogin = async (req: Request, res: Response) => {
+export const userLogin = async (req: Request, res: Response) => {
   const { email, password } = req.body;
   try {
     const user = await UserModel.findOne({ Email: email });
@@ -28,13 +28,12 @@ const userLogin = async (req: Request, res: Response) => {
     })
   }
 };
-const userRegister=async(req: Request, res: Response)=>{
-try {
-    const user= new UserModel(req.body);
-    await user.save();
-    res.status(200).json("user saved succ.")
-} catch (error) {
+// const userRegister=async(req: Request, res: Response)=>{
+// try {
+//     const user= new UserModel(req.body);
+//     await user.save();
+//     res.status(200).json("user saved succ.")
+// } catch (error) {
     
-}
-}
-module.exports = { userLogin ,userRegister};
+// }
+// }

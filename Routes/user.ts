@@ -1,7 +1,8 @@
-const Router=require('express').Router();
-import {loginUrl} from  "../Constants/URL";
-import {userLogin,userRegister} from "../Controller/user"
+import express from "express";
+import {URL} from "../Constants/URL"
+import {userLogin} from "../Controller/user"
+const Router=express.Router();
 
-Router.post(loginUrl,userLogin)
-Router.post("/register",userRegister)
+Router.post(URL.loginUrl,userLogin)
+// Router.post("/register",userRegister)
 module.exports=Router;

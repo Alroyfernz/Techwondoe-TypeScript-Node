@@ -1,7 +1,8 @@
-const Router=require('express').Router();
-const {addMovie,deleteMovie} =require('../Constants/URL');
-const {newMovie,removeMovie}=require('../Controller/movie')
-Router.post(addMovie,newMovie)
-Router.delete(deleteMovie,removeMovie)
-
+import express from "express";
+import {URL} from '../Constants/URL';
+import {newMovie,removeMovie,updateMovie}from '../Controller/movie';
+const Router=express.Router();
+Router.post(URL.addMovie,newMovie)
+Router.delete(URL.deleteMovie,removeMovie)
+Router.post(URL.updateMovie,updateMovie)
 module.exports=Router;
