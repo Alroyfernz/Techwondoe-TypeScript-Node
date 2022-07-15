@@ -1,7 +1,8 @@
 "use strict";
-const { model, Schema } = require("mongoose");
+Object.defineProperty(exports, "__esModule", { value: true });
+const mongoose_1 = require("mongoose");
 // const {ObjectId}=Schema.Types;
-const userScehma = new Schema({
+const userScehma = new mongoose_1.Schema({
     FullName: {
         type: String,
         required: true
@@ -19,4 +20,4 @@ const userScehma = new Schema({
             ref: 'Movie'
         }]
 }, { timestamps: true });
-module.exports = model("User", userScehma);
+exports.default = (0, mongoose_1.model)("User", userScehma);

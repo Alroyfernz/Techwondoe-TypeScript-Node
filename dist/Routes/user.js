@@ -9,4 +9,4 @@ const user_1 = require("../Controller/user");
 const Router = express_1.default.Router();
 Router.post(URL_1.URL.loginUrl, user_1.userLogin);
 // Router.post("/register",userRegister)
-module.exports = Router;
+exports.default = Router;

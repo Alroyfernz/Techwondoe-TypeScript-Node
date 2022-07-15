@@ -5,4 +5,4 @@ const Router=express.Router();
 
 Router.post(URL.loginUrl,userLogin)
 // Router.post("/register",userRegister)
-module.exports=Router;
+export default Router;

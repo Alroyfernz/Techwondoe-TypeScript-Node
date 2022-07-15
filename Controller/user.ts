@@ -1,3 +1,11 @@
+
+declare var process : {
+    env: {
+     PRIVATE_KEY: string,
+    
+      
+    }
+  }
 import UserModel from "../Model/User";
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
@@ -6,7 +14,7 @@ const PRIVATE_KEY = process.env.PRIVATE_KEY;
 export const userLogin = async (req: Request, res: Response) => {
   const { email, password } = req.body;
   try {
-    const user = await UserModel.findOne({ Email: email });
+    const user:any = await UserModel.findOne({ Email: email });
     if (!user) {
       res.status(500).json({
         messgae: `No user with email ${email} exists.`,
@@ -22,7 +30,7 @@ export const userLogin = async (req: Request, res: Response) => {
       token,
       data: user,
     });
-  } catch (error) {
+  } catch (error:any) {
     return res.status(500).json({
         message:`Error caused due to ${error.message}`
     })

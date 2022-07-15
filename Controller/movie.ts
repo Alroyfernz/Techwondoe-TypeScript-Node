@@ -25,7 +25,7 @@ export const removeMovie = async (req: Request, res: Response): Promise<void> =>
   const { movieId, userId } = req.params;
   try {
     await MovieModel.deleteOne({ _id: movieId });
-    const { MovieList } = await UserModel.findOne({ _id: userId });
+    const { MovieList }:any = await UserModel.findOne({ _id: userId });
     const filteredList: string[] = MovieList.filter((movie: string) => {
       movie != movieId;
     });
@@ -36,7 +36,7 @@ export const removeMovie = async (req: Request, res: Response): Promise<void> =>
     res.status(200).json({
       message: "Movie succesfully removed from list..",
     });
-  } catch (error) {
+  } catch (error:any) {
     res.status(404).json({
       message: `Error caused due to ${error.message}`,
     });
@@ -52,7 +52,7 @@ export const updateMovie=async( req: Request, res: Response): Promise<void> =>{
             message:"Movie updated succesfully.",
             data:updatedMovie
         })
-    } catch (error) {
+    } catch (error:any) {
         res.status(404).json({
             message: `Error caused due to ${error.message}`,
           });

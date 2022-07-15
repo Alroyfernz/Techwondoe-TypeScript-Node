@@ -1,7 +1,8 @@
 "use strict";
-const { model, Schema } = require("mongoose");
-const { ObjectId } = Schema.Types;
-const movieScehma = new Schema({
+Object.defineProperty(exports, "__esModule", { value: true });
+const mongoose_1 = require("mongoose");
+const { ObjectId } = mongoose_1.Schema.Types;
+const movieScehma = new mongoose_1.Schema({
     Title: {
         type: String,
         required: true,
@@ -23,4 +24,4 @@ const movieScehma = new Schema({
         type: ObjectId
     }
 }, { timestamps: true });
-module.exports = model("Movie", movieScehma);
+exports.default = (0, mongoose_1.model)("Movie", movieScehma);

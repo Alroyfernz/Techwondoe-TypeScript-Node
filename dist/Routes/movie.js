@@ -10,4 +10,4 @@ const Router = express_1.default.Router();
 Router.post(URL_1.URL.addMovie, movie_1.newMovie);
 Router.delete(URL_1.URL.deleteMovie, movie_1.removeMovie);
 Router.post(URL_1.URL.updateMovie, movie_1.updateMovie);
-module.exports = Router;
+exports.default = Router;

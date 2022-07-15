@@ -1,10 +1,19 @@
 require('dotenv').config();
+
+declare var process : {
+    env: {
+      MONGO_URL: string,
+      PORT:number,
+      SECRET_KEY:string
+    }
+  }
 import movieRoute from "./Routes/movie";
 import userRoute from "./Routes/user"
 import express,{Express} from "express";
 import mongoose from "mongoose";
-const PORT=process.env.PORT;
-const MONGO_URL=process.env.MONGO_URL;
+
+const PORT:number=process.env.PORT;
+const MONGO_URL:string=process.env.MONGO_URL;
 const app:Express=express();
 app.use(express.json());
 
