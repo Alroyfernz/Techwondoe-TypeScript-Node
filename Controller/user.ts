@@ -14,9 +14,11 @@ const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
 
 export const userLogin = async (req: Request, res: Response) => {
+    console.log("reached here...");
+    
   const { email, password } = req.body;
   try {
-    const user:any = await UserModel.findOne({ Email: email });
+    const user:any = await UserModel.find({ Email: email });
     if (!user) {
       res.status(500).json({
         messgae: `No user with email ${email} exists.`,
@@ -54,12 +56,12 @@ data:userData
         })
       }
 }
-// const userRegister=async(req: Request, res: Response)=>{
-// try {
-//     const user= new UserModel(req.body);
-//     await user.save();
-//     res.status(200).json("user saved succ.")
-// } catch (error) {
+export const userRegister=async(req: Request, res: Response)=>{
+try {
+    const user= new UserModel(req.body);
+    await user.save();
+    res.status(200).json("user saved succ.")
+} catch (error) {
     
-// }
-// }
+}
+}

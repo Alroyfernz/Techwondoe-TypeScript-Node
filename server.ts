@@ -4,7 +4,7 @@ declare var process : {
     env: {
       MONGO_URL: string,
       PORT:number,
-      SECRET_KEY:string
+      
     }
   }
 import movieRoute from "./Routes/movie";

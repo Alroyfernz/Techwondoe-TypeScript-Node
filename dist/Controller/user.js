@@ -12,15 +12,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.userInfo = exports.userLogin = void 0;
+exports.userRegister = exports.userInfo = exports.userLogin = void 0;
 const User_1 = __importDefault(require("../Model/User"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const userLogin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("reached here...");
     const { email, password } = req.body;
     try {
-        const user = yield User_1.default.findOne({ Email: email });
+        const user = yield User_1.default.find({ Email: email });
         if (!user) {
             res.status(500).json({
                 messgae: `No user with email ${email} exists.`,
@@ -60,11 +61,13 @@ const userInfo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.userInfo = userInfo;
-// const userRegister=async(req: Request, res: Response)=>{
-// try {
-//     const user= new UserModel(req.body);
-//     await user.save();
-//     res.status(200).json("user saved succ.")
-// } catch (error) {
-// }
-// }
+const userRegister = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const user = new User_1.default(req.body);
+        yield user.save();
+        res.status(200).json("user saved succ.");
+    }
+    catch (error) {
+    }
+});
+exports.userRegister = userRegister;
