@@ -11,6 +11,8 @@ import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
+
+
 export const userLogin = async (req: Request, res: Response) => {
   const { email, password } = req.body;
   try {
@@ -36,6 +38,22 @@ export const userLogin = async (req: Request, res: Response) => {
     })
   }
 };
+
+
+export const userInfo= async (req: Request, res: Response) => {
+    const {userId}=req.params;
+    try {
+        const userData=await UserModel.findById(userId).populate("MovieList");
+        res.status(200).json({
+            message:"User Data fetched succesfully",
+data:userData
+        })
+    } catch (error:any) {
+        return res.status(500).json({
+            message:`Error caused due to ${error.message}`
+        })
+      }
+}
 // const userRegister=async(req: Request, res: Response)=>{
 // try {
 //     const user= new UserModel(req.body);

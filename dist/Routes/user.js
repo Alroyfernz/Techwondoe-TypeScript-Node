@@ -8,5 +8,6 @@ const URL_1 = require("../Constants/URL");
 const user_1 = require("../Controller/user");
 const Router = express_1.default.Router();
 Router.post(URL_1.URL.loginUrl, user_1.userLogin);
+Router.get(URL_1.URL.fetchUser, user_1.userInfo);
 // Router.post("/register",userRegister)
 exports.default = Router;

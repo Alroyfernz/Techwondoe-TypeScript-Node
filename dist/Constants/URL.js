@@ -7,5 +7,6 @@ exports.URL = {
     deleteMovie: "/remove/:movieId/:userId",
     updateMovie: "/update/:movieId",
     //USER CRUD apis
-    loginUrl: '/login'
+    loginUrl: '/login',
+    fetchUser: '/details/:userId'
 };

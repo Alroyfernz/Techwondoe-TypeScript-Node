@@ -5,5 +5,6 @@ export  const URL:any={
 updateMovie:"/update/:movieId",
     //USER CRUD apis
 
-    loginUrl:'/login'
+    loginUrl:'/login',
+    fetchUser:'/details/:userId'
 }

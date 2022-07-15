@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.userLogin = void 0;
+exports.userInfo = exports.userLogin = void 0;
 const User_1 = __importDefault(require("../Model/User"));
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
@@ -44,6 +44,22 @@ const userLogin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.userLogin = userLogin;
+const userInfo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { userId } = req.params;
+    try {
+        const userData = yield User_1.default.findById(userId).populate("MovieList");
+        res.status(200).json({
+            message: "User Data fetched succesfully",
+            data: userData
+        });
+    }
+    catch (error) {
+        return res.status(500).json({
+            message: `Error caused due to ${error.message}`
+        });
+    }
+});
+exports.userInfo = userInfo;
 // const userRegister=async(req: Request, res: Response)=>{
 // try {
 //     const user= new UserModel(req.body);
