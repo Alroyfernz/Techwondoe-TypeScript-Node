@@ -20,8 +20,5 @@ const movieScehma = new mongoose_1.Schema({
         type: String,
         required: true,
     },
-    UserId: {
-        type: ObjectId
-    }
 }, { timestamps: true });
 exports.default = (0, mongoose_1.model)("Movie", movieScehma);

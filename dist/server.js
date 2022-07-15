@@ -17,6 +17,6 @@ mongoose_1.default.connect(MONGO_URL, () => {
 });
 app.use('/movie', movie_1.default);
 app.use('/user', user_1.default);
-app.listen(3111, () => {
-    console.log("Server listening on PORT 3111");
+app.listen(PORT, () => {
+    console.log(`Server listening on PORT ${PORT}`);
 });

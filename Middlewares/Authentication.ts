@@ -12,8 +12,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
         message: "You are not authorized to access this route",
       });
     const user = await jwt.verify(token as string, SECRET_KEY as string);
-   console.log(user);
-   next();
+    if (user) next();
   } catch (error: any) {
     res.status(403).json(`Error occured due to ${error.message}`);
   }

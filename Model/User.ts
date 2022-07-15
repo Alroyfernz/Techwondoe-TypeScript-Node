@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-// const {ObjectId}=Schema.Types;
+const {ObjectId}=Schema.Types;
 const userScehma = new Schema(
   {
    FullName:{
@@ -15,7 +15,7 @@ const userScehma = new Schema(
     required:true
    },
    MovieList:[{
-    type:String,
+    type:ObjectId,
     ref:'Movie'
    }]
   },

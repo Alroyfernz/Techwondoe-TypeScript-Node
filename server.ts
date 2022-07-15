@@ -1,23 +1,16 @@
 require('dotenv').config();
 
-declare var process : {
-    env: {
-      MONGO_URL: string,
-      PORT:number,
-      
-    }
-  }
 import movieRoute from "./Routes/movie";
 import userRoute from "./Routes/user"
 import express,{Express} from "express";
 import mongoose from "mongoose";
 
-const PORT:number=process.env.PORT;
-const MONGO_URL:string=process.env.MONGO_URL;
+const PORT=process.env.PORT;
+const MONGO_URL=process.env.MONGO_URL;
 const app:Express=express();
 app.use(express.json());
 
-mongoose.connect(MONGO_URL,()=>{
+mongoose.connect(MONGO_URL as string,()=>{
     console.log('connection to database succesfull..');
     
 });
@@ -25,6 +18,6 @@ mongoose.connect(MONGO_URL,()=>{
 app.use('/movie',movieRoute);
 app.use('/user',userRoute);
 
-app.listen(3111,()=>{
-    console.log("Server listening on PORT 3111");
+app.listen(PORT,()=>{
+    console.log(`Server listening on PORT ${PORT}`);
 })

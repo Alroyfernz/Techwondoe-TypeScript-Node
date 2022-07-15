@@ -23,8 +23,8 @@ exports.default = (req, res, next) => __awaiter(void 0, void 0, void 0, function
                 message: "You are not authorized to access this route",
             });
         const user = yield jsonwebtoken_1.default.verify(token, SECRET_KEY);
-        console.log(user);
-        next();
+        if (user)
+            next();
     }
     catch (error) {
         res.status(403).json(`Error occured due to ${error.message}`);

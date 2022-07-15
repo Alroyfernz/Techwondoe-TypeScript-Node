@@ -19,9 +19,7 @@ const movieScehma = new Schema(
       type: String,
       required: true,
     },
-    UserId:{
-        type:ObjectId
-    }
+   
   },
   { timestamps: true }
 );

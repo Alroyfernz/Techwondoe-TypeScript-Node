@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
-// const {ObjectId}=Schema.Types;
+const { ObjectId } = mongoose_1.Schema.Types;
 const userScehma = new mongoose_1.Schema({
     FullName: {
         type: String,
@@ -16,7 +16,7 @@ const userScehma = new mongoose_1.Schema({
         required: true
     },
     MovieList: [{
-            type: String,
+            type: ObjectId,
             ref: 'Movie'
         }]
 }, { timestamps: true });

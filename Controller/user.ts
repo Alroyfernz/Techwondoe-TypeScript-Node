@@ -1,11 +1,5 @@
 
-declare var process : {
-    env: {
-     PRIVATE_KEY: string,
-    
-      
-    }
-  }
+
 import UserModel from "../Model/User";
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
@@ -28,7 +22,7 @@ export const userLogin = async (req: Request, res: Response) => {
       res.status(500).json({
         messgae: `you have entered an invalid password.`,
       });
-    const token = jwt.sign({ email: user.email }, PRIVATE_KEY);
+    const token = jwt.sign({ email: user.email }, PRIVATE_KEY as string);
     res.status(200).json({
       message: "User Login succesfull",
       token,

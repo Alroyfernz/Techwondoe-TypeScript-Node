@@ -3,13 +3,13 @@ import MovieModel from "../Model/Movie";
 import UserModel from "../Model/User";
 
 export const newMovie = async (req: Request, res: Response): Promise<void> => {
-  const { userId } = req.params;
+  const { userId }= req.params;
   try {
     const movie = new MovieModel(req.body);
     const savedMovie = await movie.save();
     await UserModel.updateOne(
       { _id: userId },
-      { $push: { MovieList: savedMovie._id } }
+      { $push: { MovieList: savedMovie._id! } }
     );
     res.status(200).json({
       message: "New Move has been added to list",
